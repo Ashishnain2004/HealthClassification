@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Lifestyle App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Front Page with Login and Sign-Up Options -->
+    <div id="frontPage" class="page">
+        <h1>Welcome to Health Lifestyle App</h1>
+        <p>Take charge of your health with our lifestyle tracking features.</p>
+        <button onclick="navigateTo('signInPage')">Log In</button>
+        <button onclick="navigateTo('signUpPage')">Sign Up</button>
+    </div>
+
+    <!-- Sign-In Page -->
+    <div id="signInPage" class="page hidden">
+        <h2>Log In</h2>
+        <form id="signInForm" onsubmit="signIn(event)">
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button type="submit">Log In</button>
+        </form>
+        <p>Don't have an account? <a href="#" onclick="navigateTo('signUpPage')">Sign Up</a></p>
+    </div>
+
+    <!-- Sign-Up Page -->
+    <div id="signUpPage" class="page hidden">
+        <h2>Sign Up</h2>
+        <form id="signUpForm" onsubmit="signUp(event)">
+            <input type="email" id="signUpEmail" placeholder="Email" required>
+            <input type="password" id="signUpPassword" placeholder="Password" required>
+            <input type="text" id="signUpGender" placeholder="Gender" required>
+            <input type="number" id="signUpAge" placeholder="Age" required>
+            <input type="text" id="signUpOccupation" placeholder="Occupation" required>
+            <button type="submit">Create Account</button>
+        </form>
+        <p>Already have an account? <a href="#" onclick="navigateTo('signInPage')">Log In</a></p>
+    </div>
+
+    <!-- Home Page After Login -->
+    <div id="homePage" class="page hidden">
+        <h1>Dashboard</h1>
+        <button onclick="navigateTo('profilePage')">Visit Profile</button>
+        <button onclick="navigateTo('chatbot')">Help Assistant</button>
+        <button onclick="navigateTo('report')">Your Reports</button>
+        <button onclick="navigateTo('frontPage')">Logout</button>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profilePage" class="page hidden">
+        <h2>Your Profile</h2>
+        <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+        <p><strong>Gender:</strong> <span id="profileGender"></span></p>
+        <p><strong>Age:</strong> <span id="profileAge"></span></p>
+        <p><strong>Occupation:</strong> <span id="profileOccupation"></span></p>
+        <button onclick="navigateTo('homePage')">Back to Dashboard</button>
+    </div>
+    <!--ChatBot page -->
+    <div id="chatbot" class="page hidden">
+        <h2>Help Assistant</h2>
+
+        <!-- Chat Display Area -->
+        <div id="chatDisplay" class="chat-display"></div>
+
+        <!-- Chat Input Form -->
+        <form id="chatForm" onsubmit="handleChat(event)">
+            <input type="text" id="chatInput" placeholder="Type your message here..." required />
+            <button type="submit">Send</button>
+        </form>
+
+        <button onclick="navigateTo('homePage')">Back to Dashboard</button>
+    </div>
+
+
+    <!-- Report Page-->
+    <div id="report" class="page hidden">
+        <h2>Your Reports</h2>
+        <form onsubmit="handleHealth(event)" method="post">
+            <label for="reportGender">Gender:</label>
+            <input type="number" name="Gender" id="reportGender" placeholder="1 - Male, 0 - Female" required>
+
+            <label for="reportAge">Age:</label>
+            <input type="number" name="Age" id="reportAge" placeholder="Age" required>
+
+            <label for="reportOccupation">Occupation:</label>
+            <input type="number" name="Occupation" id="reportOccupation"
+                placeholder="Unemployed - 0, White-collar - 1, Blue-collar - 2, Student - 3" required>
+
+            <label for="reportSleep_Duration">Sleep Duration:</label>
+            <input type="number" name="Sleep_Duration" id="reportSleep_Duration" placeholder="In Hours" required>
+
+            <label for="reportquality_sleep">Quality of Sleep:</label>
+            <input type="number" name="quality_sleep" id="reportquality_sleep"
+                placeholder="Poor - 0, Moderate - 1, Good - 2" required>
+
+            <label for="reportPhysical_Activity_Level">Physical Activity Level:</label>
+            <input type="number" name="activity_level" id="reportPhysical_Activity_Level" 
+                placeholder="Low - 0, Moderate - 1, High - 2" required>
+
+            <label for="reportStress_Level">Stress Level:</label>
+            <input type="number" name="stress_level" id="reportStress_Level"
+                placeholder="Low - 0, Moderate - 1, High - 2" required>
+
+            <label for="reportBMI_Catogery">BMI Category:</label>
+            <input type="number" name="BMI" id="reportBMI_Catogery"
+                placeholder="Underweight - 0, Normal - 1, Overweight - 2, Obese - 3" required>
+
+            <label for="reportHeart_rate">Heart Rate:</label>
+            <input type="number" name="Heart_rate" id="reportHeart_rate" placeholder="Heart Rate" required>
+
+            <label for="reportSteps">Daily Steps:</label>
+            <input type="number" name="Steps" id="reportSteps" placeholder="Steps" required>
+
+            <label for="reportSleep_Disorder">Sleep Disorder:</label>
+            <input type="number" name="Sleep_Disorder" id="reportSleep_Disorder" placeholder="Yes - 1, No - 0" required>
+
+            <label for="reportBP_High">BP High:</label>
+            <input type="number" name="BP_High" id="reportBP_High" placeholder="BP High" required>
+
+            <label for="reportBP_Low">BP Low:</label>
+            <input type="number" name="BP_Low" id="reportBP_Low" placeholder="BP Low" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+
+
+
+        <button onclick="navigateTo('homePage')">Back to Dashboard</button>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
